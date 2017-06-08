@@ -2784,7 +2784,6 @@ var nameShape = exports.nameShape = _propTypes2.default.oneOfType([_propTypes2.d
   appearActive: _propTypes2.default.string
 })]);
 },{"prop-types":undefined,"react":undefined}],40:[function(require,module,exports){
-(function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -2846,8 +2845,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = warning;
 
-}).call(this,require('_process'))
-},{"_process":34}],41:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -3441,7 +3439,7 @@ var PaginatedThumbnails = (function (_Component) {
 				icon: 'arrowRight',
 				onClick: this.gotoNext,
 				style: arrowStyles,
-				title: 'Previous (Right arrow key)',
+				title: 'Next (Right arrow key)',
 				type: 'button'
 			});
 		}
@@ -4155,6 +4153,8 @@ var Lightbox = (function (_Component) {
 			var showThumbnails = _props.showThumbnails;
 			var width = _props.width;
 
+			var Details = this.props.Details ? this.props.Details : _componentsFooter2['default'];
+
 			if (!isOpen) return _react2['default'].createElement('span', { key: 'closed' });
 
 			var offsetThumbnails = 0;
@@ -4178,7 +4178,7 @@ var Lightbox = (function (_Component) {
 						showCloseButton: showCloseButton,
 						closeButtonTitle: this.props.closeButtonTitle
 					}),
-					this.renderImages()
+					this.renderImages(Details)
 				),
 				this.renderThumbnails(),
 				this.renderArrowPrev(),
@@ -4188,7 +4188,7 @@ var Lightbox = (function (_Component) {
 		}
 	}, {
 		key: 'renderImages',
-		value: function renderImages() {
+		value: function renderImages(Details) {
 			var _props2 = this.props;
 			var currentImage = _props2.currentImage;
 			var images = _props2.images;
@@ -4227,7 +4227,7 @@ var Lightbox = (function (_Component) {
 						maxHeight: 'calc(100vh - ' + heightOffset + ')'
 					}
 				}),
-				_react2['default'].createElement(_componentsFooter2['default'], {
+				_react2['default'].createElement(Details, {
 					caption: images[currentImage].caption,
 					countCurrent: currentImage + 1,
 					countSeparator: imageCountSeparator,
